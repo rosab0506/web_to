@@ -1,6 +1,9 @@
 "use strict";
 
 parserFactory.register("ficbook.net", () => new FicbookParser());
+parserFactory.register("fic.fan", () => new FicbookParser());
+parserFactory.register("fanfictionero.com", () => new FicbookParser());
+parserFactory.register("ficador.com", () => new FicbookParser());
 
 class FicbookParser extends Parser {
     constructor() {
