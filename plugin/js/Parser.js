@@ -113,6 +113,7 @@ class Parser {
             this.removeNextAndPreviousChapterHyperlinks(webPage, content);
         }
         this.removeUnwantedElementsFromContentElement(content);
+        this.replaceWpBlockSpacersWithHR(content);
         this.addTitleToContent(webPage, content);
         util.fixBlockTagsNestedInInlineTags(content);
         this.imageCollector.replaceImageTags(content);
@@ -164,6 +165,12 @@ class Parser {
     */
     findChapterTitle(dom) {   // eslint-disable-line no-unused-vars
         return null;
+    }
+
+    replaceWpBlockSpacersWithHR(content) {
+        [...content.querySelectorAll("div.wp-block-spacer")].forEach(
+            e => e.replaceWith(content.ownerDocument.createElement("hr"))
+        );
     }
 
     removeUnwantedElementsFromContentElement(element) {
