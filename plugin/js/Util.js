@@ -26,7 +26,14 @@ const util = (function() {
     }
 
     function isFirefox() {
-        return (typeof (browser) !== "undefined");
+        if (navigator.brave && navigator.brave.isBrave)
+        {
+            return false;
+        }
+        else
+        {
+            return (typeof (browser) !== "undefined");
+        }
     }
 
     function extensionVersion() {
