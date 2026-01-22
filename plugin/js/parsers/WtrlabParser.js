@@ -183,11 +183,21 @@ class WtrlabParser extends Parser {
             } else {
                 let pnode = newDoc.dom.createElement("p");
                 let newtext = element;
+                // replace provided translation with custom one
+                for (let i = 0; i < json?.data?.data?.glossary_data?.terms?.length??0; i++) {
+                    for (let term of this.terms) {
+                        if ((json.data.data.glossary_data.terms[i][1]??"") == term?.from) {
+                            json.data.data.glossary_data.terms[i][0] = term?.to;
+                        }
+                    }
+                }
+                // replace with provided translation
                 for (let i = 0; i < json?.data?.data?.glossary_data?.terms?.length??0; i++) {
                     let term = json.data.data.glossary_data.terms[i][0]??"※"+i+"⛬";
                     newtext = newtext.replaceAll("※"+i+"⛬", term);
                     newtext = newtext.replaceAll("※" + i + "〓", term);
                 }
+                // replace custom terms
                 for (let term of this.terms) {
                     newtext = newtext.replaceAll(term?.from, term?.to);
                 }
