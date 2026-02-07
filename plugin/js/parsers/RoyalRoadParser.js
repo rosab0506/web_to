@@ -27,7 +27,7 @@ class RoyalRoadParser extends Parser {
         );
 
         // fix embeded image links 
-        content.querySelector(".author-note").querySelectorAll("a").forEach((e) => 
+        content.querySelector(".author-note")?.querySelectorAll("a")?.forEach((e) => 
         {
             let img = e.querySelector("img");
             if (img !== null) 
