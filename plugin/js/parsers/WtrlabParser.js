@@ -50,14 +50,14 @@ class WtrlabParser extends Parser {
             let termstmp = {};
             for (let i = 0; i < terms?.glossaries?.length; i++) {
                 for (let j = 0; j < terms.glossaries[i]?.data?.terms?.length; j++) {
-                    if(terms.glossaries[i]?.data.terms[j]?.length>1 && terms.glossaries[i]?.data.terms[j][0].length>0 ){
+                    if (terms.glossaries[i]?.data.terms[j]?.length>1 && terms.glossaries[i]?.data.terms[j][0].length>0) {
                         termstmp[terms.glossaries[i].data.terms[j][1]] = terms.glossaries[i].data.terms[j][0][0];
                     }
                 }
             }
             this.termsstory = [];
             let index = 0;
-            for(let key in termstmp){
+            for (let key in termstmp) {
                 this.termsstory[index++] = ({from: key, to: termstmp[key]});
             }
         } catch (error) {
